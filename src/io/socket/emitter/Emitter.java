@@ -8,6 +8,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentMap;
 
+import android.util.Log;
+
 
 /**
  * The event emitter which is ported from the JavaScript module. This class is thread-safe.
@@ -26,6 +28,7 @@ public class Emitter {
      * @return a reference to this object.
      */
     public Emitter on(String event, Listener fn) {
+    	//Log.d("SocketIOClient", "CALLING EMITTER ON FOR EVENT " + event + "!!!");
         ConcurrentLinkedQueue<Listener> callbacks = this.callbacks.get(event);
         if (callbacks == null) {
             callbacks = new ConcurrentLinkedQueue <Listener>();

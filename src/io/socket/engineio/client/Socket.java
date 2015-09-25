@@ -8,10 +8,14 @@ import io.socket.engineio.parser.Packet;
 import io.socket.engineio.parser.Parser;
 import io.socket.parseqs.ParseQS;
 import io.socket.thread.EventThread;
+
 import org.json.JSONException;
+
+import android.util.Log;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
@@ -714,7 +718,7 @@ public class Socket extends Emitter {
                         @Override
                         public void run() {
                             self.onClose("forced close");
-                            logger.fine("socket closing - telling transport to close");
+                            Log.d("SocketIOClient", "socket closing - telling transport to close");
                             self.transport.close();
                         }
                     };

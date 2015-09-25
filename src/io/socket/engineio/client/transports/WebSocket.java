@@ -6,16 +6,20 @@ import io.socket.engineio.parser.Packet;
 import io.socket.engineio.parser.Parser;
 import io.socket.parseqs.ParseQS;
 import io.socket.thread.EventThread;
+import android.util.Log;
+
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import com.squareup.okhttp.ws.WebSocket.PayloadType;
 import com.squareup.okhttp.ws.WebSocketCall;
 import com.squareup.okhttp.ws.WebSocketListener;
+
 import okio.Buffer;
 import okio.BufferedSource;
 
 import javax.net.ssl.SSLSocketFactory;
+
 import java.io.IOException;
 import java.util.*;
 import java.util.logging.Logger;
@@ -174,6 +178,7 @@ public class WebSocket extends Transport {
     }
 
     protected void doClose() {
+    	Log.d("SocketIOClient", "CLOSING WEBSOCKET TRANSPORT");
         if (wsCall != null) {
             wsCall.cancel();
         }

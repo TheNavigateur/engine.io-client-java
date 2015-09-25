@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import android.util.Log;
+
 abstract public class Polling extends Transport {
 
     private static final Logger logger = Logger.getLogger(Polling.class.getName());
@@ -146,6 +148,7 @@ abstract public class Polling extends Transport {
     }
 
     protected void doClose() {
+    	Log.d("SocketIOClient", "CLOSING POLLING TRANSPORT");
         final Polling self = this;
 
         Emitter.Listener close = new Emitter.Listener() {
